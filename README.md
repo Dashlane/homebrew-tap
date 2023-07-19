@@ -17,9 +17,9 @@ brew install dashlane/tap/<FORMULA>
 
 ## Formulae
 
-| Repository                                                | Formula                            | Description                          |
-| --------------------------------------------------------- | ---------------------------------- | ------------------------------------ |
-| [dashlane-cli](hhttps://github.com/Dashlane/dashlane-cli) | [formula](Formula/dashlane-cli.rb) | CLI tool for Dashlane vaults and API |
+| Repository                                               | Formula                            | Description                          |
+| -------------------------------------------------------- | ---------------------------------- | ------------------------------------ |
+| [dashlane-cli](https://github.com/Dashlane/dashlane-cli) | [formula](Formula/dashlane-cli.rb) | CLI tool for Dashlane vaults and API |
 
 ## Documentation
 
