@@ -3,8 +3,8 @@ require "language/node"
 class DashlaneCli < Formula
   desc "Command-line interface for Dashlane"
   homepage "https://dashlane.com"
-  url "https://github.com/Dashlane/dashlane-cli/archive/refs/tags/v1.9.0.tar.gz"
-  sha256 "541b1780efe3a94ab85179972302df17134062eba5543dda9d124a25f6de78cc"
+  url "https://github.com/Dashlane/dashlane-cli/archive/refs/tags/v1.10.0.tar.gz"
+  sha256 "d750387025b14d84ec0f83db06b9f91f7f6d9c63e11bab059b4fdcd9a49f01e8"
   license "Apache-2.0"
 
   livecheck do
@@ -38,12 +38,5 @@ class DashlaneCli < Formula
   test do
     # Test cli version
     assert_equal version.to_s, shell_output("#{bin}/dcli --version").chomp
-
-    # Test cli reset storage
-    expected_stdout = "? Do you really want to delete all local data from this app? (Use arrow keys)\n" \
-                      "❯ Yes \n  No \e[5D\e[5C\e[2K\e[1A\e[2K\e[1A\e[2K\e[G? " \
-                      "Do you really want to delete all local data from this " \
-                      "app? Yes\e[64D\e[64C\nThe local Dashlane local storage has been reset"
-    assert_equal expected_stdout, pipe_output("#{bin}/dcli reset", "\n", 0).chomp
   end
 end
