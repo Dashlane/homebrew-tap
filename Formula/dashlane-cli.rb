@@ -16,8 +16,6 @@ class DashlaneCli < Formula
   depends_on "yarn" => :build
 
   on_macos do
-    # macos requires binaries to do codesign
-    depends_on xcode: :build
     # macos 12+ only
     depends_on macos: :monterey
   end
@@ -25,8 +23,8 @@ class DashlaneCli < Formula
   def install
     Language::Node.setup_npm_environment
     platform = OS.linux? ? "linux" : "macos"
-    system "yarn", "set", "version", "berry"
-    system "yarn"
+    system "yarn", "set", "version", "3.4.1"
+    system "yarn", "install", "--frozen-lockfile"
     system "yarn", "run", "build"
     system "yarn", "workspaces", "focus", "--production"
     system "yarn", "dlx", "pkg", ".",
