@@ -3,8 +3,8 @@ require "language/node"
 class DashlaneCli < Formula
   desc "Command-line interface for Dashlane"
   homepage "https://dashlane.com"
-  url "https://github.com/Dashlane/dashlane-cli/archive/refs/tags/v1.14.0.tar.gz"
-  sha256 "9aef5c7c92eb8b18314d67aa36768340f502b77456e3e06fb2e19d7d912cce3b"
+  url "https://github.com/Dashlane/dashlane-cli/archive/refs/tags/v1.14.2.tar.gz"
+  sha256 "db3ce40b8edd52ad2a9efaf71e521b25a0510d1ebda93405c5c7bae8c5bca94c"
   license "Apache-2.0"
 
   livecheck do
@@ -16,8 +16,6 @@ class DashlaneCli < Formula
   depends_on "yarn" => :build
 
   on_macos do
-    # macos requires binaries to do codesign
-    depends_on xcode: :build
     # macos 12+ only
     depends_on macos: :monterey
   end
@@ -25,8 +23,8 @@ class DashlaneCli < Formula
   def install
     Language::Node.setup_npm_environment
     platform = OS.linux? ? "linux" : "macos"
-    system "yarn", "set", "version", "berry"
-    system "yarn"
+    system "yarn", "set", "version", "3.4.1"
+    system "yarn", "install", "--frozen-lockfile"
     system "yarn", "run", "build"
     system "yarn", "workspaces", "focus", "--production"
     system "yarn", "dlx", "pkg", ".",

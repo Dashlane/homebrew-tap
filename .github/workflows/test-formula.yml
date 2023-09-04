@@ -1,0 +1,15 @@
+name: Test Homebrew Formula
+
+on: [push]
+
+jobs:
+    macos:
+        runs-on: macos-latest
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Install Dashlane CLI from rb file
+              run: brew install --build-from-source Formula/dashlane-cli.rb
+
+            - name: Run brew tests
+              run: brew test Formula/dashlane-cli.rb
