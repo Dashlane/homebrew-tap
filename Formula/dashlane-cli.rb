@@ -23,7 +23,7 @@ class DashlaneCli < Formula
   def install
     Language::Node.setup_npm_environment
     platform = OS.linux? ? "linux" : "macos"
-    system "yarn", "set", "version", "3.4.1"
+    system "yarn", "set", "version", "3.6.3"
     system "yarn", "install", "--frozen-lockfile"
     system "yarn", "run", "build"
     system "yarn", "workspaces", "focus", "--production"
