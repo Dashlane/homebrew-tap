@@ -12,7 +12,7 @@ class DashlaneCli < Formula
     strategy :github_latest
   end
 
-  depends_on "node@16" => :build
+  depends_on "node@18" => :build
   depends_on "yarn" => :build
 
   on_macos do
@@ -28,7 +28,7 @@ class DashlaneCli < Formula
     system "yarn", "run", "build"
     system "yarn", "workspaces", "focus", "--production"
     system "yarn", "dlx", "pkg", ".",
-      "-t", "node16-#{platform}-#{Hardware::CPU.arch}", "-o", "bin/dcli",
+      "-t", "node18-#{platform}-#{Hardware::CPU.arch}", "-o", "bin/dcli",
       "--no-bytecode", "--public", "--public-packages", "tslib,thirty-two"
     bin.install "bin/dcli"
   end
