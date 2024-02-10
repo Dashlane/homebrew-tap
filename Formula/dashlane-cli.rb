@@ -27,7 +27,7 @@ class DashlaneCli < Formula
     system "yarn", "install", "--frozen-lockfile"
     system "yarn", "run", "build"
     system "yarn", "workspaces", "focus", "--production"
-    system "yarn", "dlx", "@yao-pkg/pkg", ".",
+    system "yarn", "dlx", "@yao-pkg/pkg@5.11.1", ".",
       "-t", "node18-#{platform}-#{Hardware::CPU.arch}", "-o", "bin/dcli",
       "--no-bytecode", "--public", "--public-packages", "tslib,thirty-two"
     bin.install "bin/dcli"
