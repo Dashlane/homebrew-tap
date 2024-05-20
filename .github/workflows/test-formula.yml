@@ -1,12 +1,29 @@
 name: Test Homebrew Formula
 
-on: [push]
+on:
+    pull_request:
+        branches:
+            - main
+    push:
+        branches:
+            - main
 
 jobs:
-    macos:
-        runs-on: macos-latest
+    test_formula:
+        strategy:
+            matrix:
+                os: [macos-latest, ubuntu-latest]
+        runs-on: ${{ matrix.os }}
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
+
+            - name: Install Homebrew (Linux only)
+              if: runner.os == 'Linux'
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y build-essential curl file git
+                  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+                  echo /home/linuxbrew/.linuxbrew/bin >> $GITHUB_PATH
 
             - name: Install Dashlane CLI from rb file
               run: brew install --build-from-source Formula/dashlane-cli.rb
