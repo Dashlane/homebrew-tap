@@ -29,7 +29,7 @@ class DashlaneCli < Formula
     platform = OS.linux? ? "linux" : "macos"
     system "yarn", "set", "version", "4.2.2"
     system "yarn", "install", "--frozen-lockfile"
-    system "yarn", "run", "build"
+    system "COMMIT_HASH=c377153edeacd7a328204fd73cad8a825f228cc3", "yarn", "run", "build"
     system "yarn", "workspaces", "focus", "--production"
     system "yarn", "dlx", "@yao-pkg/pkg@5.11.5", ".",
       "-t", "node18-#{platform}-#{Hardware::CPU.arch}", "-o", "bin/dcli",
