@@ -12,12 +12,16 @@ class DashlaneCli < Formula
     strategy :github_latest
   end
 
-  option 'with-corepack', 'Use yarn from corepack instead of installing it'
+  option "with-corepack", "Use yarn from corepack instead of installing it"
 
   depends_on "node@18" => :build
-  
-  depends_on 'yarn' if !build.with?('corepack')
-  depends_on 'corepack' if  build.with?('corepack')
+
+  # Needed for node-gyp packages
+  depends_on "python" => :build
+  depends_on "python-setuptools" => :build
+
+  depends_on "yarn" if !build.with?("corepack")
+  depends_on "corepack" if  build.with?("corepack")
 
   on_macos do
     # macos 12+ only
