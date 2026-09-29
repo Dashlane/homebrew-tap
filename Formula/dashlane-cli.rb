@@ -3,8 +3,8 @@ require "language/node"
 class DashlaneCli < Formula
   desc "Command-line interface for Dashlane"
   homepage "https://dashlane.com"
-  url "https://github.com/Dashlane/dashlane-cli/archive/refs/tags/v6.2640.0.tar.gz"
-  sha256 "32e1acd654205f8365244112e220f3470a93c6021e565ada88251ad12496f667"
+  url "https://github.com/Dashlane/dashlane-cli/archive/refs/tags/v6.2640.1.tar.gz"
+  sha256 "80448eb9283b0714ffe733094667775555beb62351685a6e2bb6bf7bae54362d"
   license "Apache-2.0"
 
   livecheck do
